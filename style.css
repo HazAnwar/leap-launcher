@@ -138,10 +138,14 @@ a:hover {
   transition: var(--t);
 }
 
-/* === Theme Toggle === */
-/* === Nav GitHub icon === */
-.nav-github {
+/* === Nav Social Icons === */
+.nav-social {
   display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.nav-social-link {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 36px;
@@ -149,21 +153,21 @@ a:hover {
   border-radius: 50%;
   border: 1px solid var(--border);
   color: var(--text-muted);
-  flex-shrink: 0;
   transition:
     border-color var(--t),
     color var(--t);
 }
-.nav-github:hover {
+.nav-social-link:hover {
   border-color: var(--accent);
   color: var(--accent);
 }
-.nav-github svg {
+.nav-social-link svg {
   width: 16px;
   height: 16px;
   fill: currentColor;
 }
 
+/* === Theme Toggle === */
 .theme-toggle {
   background: none;
   border: 1px solid var(--border);
