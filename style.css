@@ -361,6 +361,106 @@ section {
   box-shadow: 0 10px 36px rgba(var(--accent-rgb), 0.18);
 }
 
+/* === TV Mockup === */
+.tv-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+.tv-frame {
+  width: 100%;
+  max-width: 820px;
+}
+.tv-bezel {
+  background: #181818;
+  border-radius: 16px 16px 10px 10px;
+  padding: 14px 14px 24px;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 40px 100px rgba(0, 0, 0, 0.55),
+    0 0 60px rgba(var(--accent-rgb), 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+.tv-screen {
+  aspect-ratio: 16 / 9;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #000;
+}
+.tv-screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.18s ease;
+}
+.tv-screen img.fading {
+  opacity: 0;
+}
+.tv-stand-neck {
+  width: 80px;
+  height: 22px;
+  background: linear-gradient(to bottom, #202020, #181818);
+  margin: 0 auto;
+  clip-path: polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%);
+}
+.tv-stand-base {
+  width: 220px;
+  height: 10px;
+  background: #181818;
+  border-radius: 0 0 8px 8px;
+  margin: 0 auto;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+.tv-caption {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.tv-thumbnails {
+  display: flex;
+  gap: 0.625rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 820px;
+}
+.tv-thumb {
+  width: 112px;
+  aspect-ratio: 16 / 9;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid var(--border);
+  background: none;
+  padding: 0;
+  flex-shrink: 0;
+  transition:
+    border-color var(--t),
+    transform var(--t),
+    box-shadow var(--t);
+}
+.tv-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+.tv-thumb:hover {
+  border-color: rgba(var(--accent-rgb), 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(var(--accent-rgb), 0.15);
+}
+.tv-thumb.active {
+  border-color: var(--accent);
+  box-shadow:
+    0 0 0 1px var(--accent),
+    0 6px 20px rgba(var(--accent-rgb), 0.2);
+}
+
 /* === Bug Report === */
 .bug-report {
   background: var(--surface);
@@ -525,5 +625,18 @@ footer a:hover {
   }
   .features-grid {
     grid-template-columns: 1fr;
+  }
+  .tv-bezel {
+    padding: 8px 8px 16px;
+  }
+  .tv-stand-neck {
+    width: 50px;
+    height: 16px;
+  }
+  .tv-stand-base {
+    width: 140px;
+  }
+  .tv-thumb {
+    width: 80px;
   }
 }
