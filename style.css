@@ -525,7 +525,7 @@ section {
   margin-top: -0.5rem;
 }
 .bug-form .cta-button {
-  align-self: flex-start;
+  align-self: center;
 }
 
 /* === Privacy page === */
