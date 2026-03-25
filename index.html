@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Leap Launcher — Android TV Launcher</title>
-    <meta name="description" content="A simple and elegant launcher for your Android TV. Available free on the Google Play Store." />
+    <meta name="description"
+        content="A simple and elegant launcher for your Android TV. Available free on the Google Play Store." />
     <meta name="theme-color" content="#00ffe1" />
     <!-- Open Graph -->
     <meta property="og:title" content="Leap Launcher" />
@@ -17,280 +19,323 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;600;700&display=swap"
+        rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <script>
-      // Apply theme before paint to prevent flash
-      (function () {
-        var saved = localStorage.getItem('theme');
-        var prefer = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', saved || prefer);
-      })();
+        // Apply theme before paint to prevent flash
+        (function () {
+            var saved = localStorage.getItem('theme');
+            var prefer = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', saved || prefer);
+        })();
     </script>
-  </head>
-  <body>
+</head>
+
+<body>
 
     <!-- ========== NAV ========== -->
     <nav class="nav">
-      <a href="https://hazanwar.github.io/" class="nav-brand">
-        <img src="assets/logo.webp" alt="Leap Launcher" class="nav-icon" />
-      </a>
-      <div class="nav-links" id="navLinks">
-        <a href="#screenshots">Screenshots</a>
-        <a href="#report">Report a Bug</a>
-        <a href="privacy.html">Privacy</a>
-      </div>
-      <div class="nav-social">
-        <a href="https://github.com/HazAnwar/leap-launcher" class="nav-social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-        </a>
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle colour theme">
-          <!-- Moon = switch to dark (shown in light mode) -->
-          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-          <!-- Sun = switch to light (shown in dark mode) -->
-          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        </button>
-      </div>
-        <button class="nav-hamburger" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
-          <span></span><span></span><span></span>
+        <div class="nav-links" id="navLinks">
+            <a href="https://hazanwar.github.io/">Home</a>
+            <a href="#screenshots">Screenshots</a>
+            <a href="#report">Report a Bug</a>
+            <a href="privacy.html">Privacy</a>
+        </div>
+        <div class="nav-social">
+            <a href="https://github.com/HazAnwar/leap-launcher" class="nav-social-link" target="_blank"
+                rel="noopener noreferrer" aria-label="GitHub repository">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                        d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                </svg>
+            </a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle colour theme">
+                <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                </svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="5" />
+                    <line x1="12" y1="1" x2="12" y2="3" />
+                    <line x1="12" y1="21" x2="12" y2="23" />
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                    <line x1="1" y1="12" x2="3" y2="12" />
+                    <line x1="21" y1="12" x2="23" y2="12" />
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                </svg>
+            </button>
+        </div>
+        <button class="nav-hamburger" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false"
+            aria-controls="navLinks">
+            <span></span><span></span><span></span>
         </button>
     </nav>
 
     <main>
 
-      <!-- ========== HERO ========== -->
-      <section class="hero">
-        <div class="hero-content">
-          <img src="assets/logo.webp" alt="Leap Launcher app icon" class="hero-icon" />
-          <h1>Leap Launcher</h1>
-          <p class="hero-subtitle">A simple and elegant launcher for your Android TV.</p>
-          <div class="hero-actions">
-            <a
-              href="https://play.google.com/store/apps/details?id=com.haztech.launcher"
-              class="cta-button"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <!-- Google Play icon -->
-              <svg viewBox="0 0 512 512" aria-hidden="true"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c17.1-9.8 17.1-34.9-.1-44.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
-              Download on Play Store
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- ========== SCREENSHOTS ========== -->
-      <section class="screenshots-section" id="screenshots">
-        <div class="container">
-          <h2 class="section-title">See it in action</h2>
-          <p class="section-lead">A clean, fast launcher purpose-built for your Android TV.</p>
-          <div class="tv-wrapper">
-
-            <!-- TV frame -->
-            <div class="tv-frame" aria-label="App screenshot preview">
-              <div class="tv-bezel">
-                <div class="tv-screen">
-                  <img src="assets/screenshot-home.png" alt="Leap Launcher — Home screen" id="tvScreen" />
+        <!-- ========== HERO ========== -->
+        <section class="hero">
+            <div class="hero-content">
+                <img src="assets/logo.webp" alt="Leap Launcher app icon" class="hero-icon" />
+                <h1>Leap Launcher</h1>
+                <p class="hero-subtitle">A simple and elegant launcher for your Android TV.</p>
+                <div class="hero-actions">
+                    <a href="https://play.google.com/store/apps/details?id=com.haztech.launcher" class="cta-button"
+                        target="_blank" rel="noopener noreferrer">
+                        <!-- Google Play icon -->
+                        <svg viewBox="0 0 512 512" aria-hidden="true">
+                            <path
+                                d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c17.1-9.8 17.1-34.9-.1-44.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z" />
+                        </svg>
+                        Download on Play Store
+                    </a>
                 </div>
-                <button class="tv-nav-btn tv-prev" id="tvPrev" aria-label="Previous screenshot">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
-                </button>
-                <button class="tv-nav-btn tv-next" id="tvNext" aria-label="Next screenshot">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-                </button>
-              </div>
-              <div class="tv-stand-neck"></div>
-              <div class="tv-stand-base"></div>
             </div>
+        </section>
 
-            <!-- Active screenshot label -->
-            <p class="tv-caption" id="tvCaption" aria-live="polite">Home</p>
+        <!-- ========== SCREENSHOTS ========== -->
+        <section class="screenshots-section" id="screenshots">
+            <div class="container">
+                <h2 class="section-title">See it in action</h2>
+                <p class="section-lead">A clean, fast launcher purpose-built for your Android TV.</p>
+                <div class="tv-wrapper">
 
-            <!-- Thumbnail strip -->
-            <div class="tv-thumbnails" role="list" aria-label="Screenshot thumbnails">
-              <button class="tv-thumb active" data-src="assets/screenshot-home.png" data-caption="Home" aria-label="Home" aria-pressed="true">
-                <span class="thumb-img"><img src="assets/screenshot-home.png" alt="" /></span>
-                <span class="thumb-label">Home</span>
-              </button>
-              <button class="tv-thumb" data-src="assets/screenshot-apps-tv.png" data-caption="Apps" aria-label="Apps" aria-pressed="false">
-                <span class="thumb-img"><img src="assets/screenshot-apps-tv.png" alt="" /></span>
-                <span class="thumb-label">Apps</span>
-              </button>
-              <button class="tv-thumb" data-src="assets/screenshot-channels.png" data-caption="Channels" aria-label="Channels" aria-pressed="false">
-                <span class="thumb-img"><img src="assets/screenshot-channels.png" alt="" /></span>
-                <span class="thumb-label">Channels</span>
-              </button>
-              <button class="tv-thumb" data-src="assets/screenshot-play-next.png" data-caption="Play Next" aria-label="Play Next" aria-pressed="false">
-                <span class="thumb-img"><img src="assets/screenshot-play-next.png" alt="" /></span>
-                <span class="thumb-label">Play Next</span>
-              </button>
-              <button class="tv-thumb" data-src="assets/screenshot-settings.png" data-caption="Settings" aria-label="Settings" aria-pressed="false">
-                <span class="thumb-img"><img src="assets/screenshot-settings.png" alt="" /></span>
-                <span class="thumb-label">Settings</span>
-              </button>
-              <button class="tv-thumb" data-src="assets/screenshot-customisation.png" data-caption="Customise" aria-label="Customise" aria-pressed="false">
-                <span class="thumb-img"><img src="assets/screenshot-customisation.png" alt="" /></span>
-                <span class="thumb-label">Customise</span>
-              </button>
-              <button class="tv-thumb" data-src="assets/screenshot-apps-mobile.png" data-caption="Mobile View" aria-label="Mobile View" aria-pressed="false">
-                <span class="thumb-img"><img src="assets/screenshot-apps-mobile.png" alt="" /></span>
-                <span class="thumb-label">Mobile</span>
-              </button>
-            </div>
+                    <!-- TV frame -->
+                    <div class="tv-frame" aria-label="App screenshot preview">
+                        <div class="tv-bezel">
+                            <div class="tv-screen" id="tvScreen"
+                                style="background-image: url('assets/screenshot-home.png')" role="img"
+                                aria-label="Leap Launcher — Home screen">
+                            </div>
+                            <button class="tv-nav-btn tv-prev" id="tvPrev" aria-label="Previous screenshot">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <polyline points="15 18 9 12 15 6" />
+                                </svg>
+                            </button>
+                            <button class="tv-nav-btn tv-next" id="tvNext" aria-label="Next screenshot">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <polyline points="9 18 15 12 9 6" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="tv-stand-neck"></div>
+                        <div class="tv-stand-base"></div>
+                    </div>
 
-          </div>
-        </div>
-      </section>
+                    <!-- Active screenshot label -->
+                    <p class="tv-caption" id="tvCaption" aria-live="polite">Home</p>
 
-      <!-- ========== BUG REPORT ========== -->
-      <section class="bug-report" id="report">
-        <div class="container">
-          <h2 class="section-title">Report a Bug</h2>
-          <p class="section-lead">Found an issue? Fill in the details below and we'll open a GitHub issue for you.</p>
-          <form class="bug-form" id="bugForm" novalidate>
-            <div class="form-group">
-              <label for="bugTitle">Summary <span aria-hidden="true">*</span></label>
-              <input type="text" id="bugTitle" placeholder="Brief description of the issue" required />
+                    <!-- Thumbnail strip -->
+                    <div class="tv-thumbnails" role="list" aria-label="Screenshot thumbnails">
+                        <button class="tv-thumb active" data-src="assets/screenshot-home.png" data-caption="Home"
+                            aria-label="Home" aria-pressed="true">
+                            <span class="thumb-img"><img src="assets/screenshot-home.png" alt="" /></span>
+                            <span class="thumb-label">Home</span>
+                        </button>
+                        <button class="tv-thumb" data-src="assets/screenshot-apps-tv.png" data-caption="Apps"
+                            aria-label="Apps" aria-pressed="false">
+                            <span class="thumb-img"><img src="assets/screenshot-apps-tv.png" alt="" /></span>
+                            <span class="thumb-label">Apps</span>
+                        </button>
+                        <button class="tv-thumb" data-src="assets/screenshot-channels.png" data-caption="Channels"
+                            aria-label="Channels" aria-pressed="false">
+                            <span class="thumb-img"><img src="assets/screenshot-channels.png" alt="" /></span>
+                            <span class="thumb-label">Channels</span>
+                        </button>
+                        <button class="tv-thumb" data-src="assets/screenshot-play-next.png" data-caption="Play Next"
+                            aria-label="Play Next" aria-pressed="false">
+                            <span class="thumb-img"><img src="assets/screenshot-play-next.png" alt="" /></span>
+                            <span class="thumb-label">Play Next</span>
+                        </button>
+                        <button class="tv-thumb" data-src="assets/screenshot-settings.png" data-caption="Settings"
+                            aria-label="Settings" aria-pressed="false">
+                            <span class="thumb-img"><img src="assets/screenshot-settings.png" alt="" /></span>
+                            <span class="thumb-label">Settings</span>
+                        </button>
+                        <button class="tv-thumb" data-src="assets/screenshot-customisation.png" data-caption="Customise"
+                            aria-label="Customise" aria-pressed="false">
+                            <span class="thumb-img"><img src="assets/screenshot-customisation.png" alt="" /></span>
+                            <span class="thumb-label">Customise</span>
+                        </button>
+                        <button class="tv-thumb" data-src="assets/screenshot-apps-mobile.png" data-caption="Mobile View"
+                            aria-label="Mobile View" aria-pressed="false">
+                            <span class="thumb-img"><img src="assets/screenshot-apps-mobile.png" alt="" /></span>
+                            <span class="thumb-label">Mobile</span>
+                        </button>
+                    </div>
+
+                </div>
             </div>
-            <div class="form-group">
-              <label for="bugDevice">Device / Android TV Version</label>
-              <input type="text" id="bugDevice" placeholder="e.g. Chromecast with Google TV, Android 10" />
+        </section>
+
+        <!-- ========== BUG REPORT ========== -->
+        <section class="bug-report" id="report">
+            <div class="container">
+                <h2 class="section-title">Report a Bug</h2>
+                <p class="section-lead">Found an issue? Fill in the details below and we'll open a GitHub issue for you.
+                </p>
+                <form class="bug-form" id="bugForm" novalidate>
+                    <div class="form-group">
+                        <label for="bugTitle">Summary <span aria-hidden="true">*</span></label>
+                        <input type="text" id="bugTitle" placeholder="Brief description of the issue" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="bugDevice">Device / Android TV Version</label>
+                        <input type="text" id="bugDevice" placeholder="e.g. Chromecast with Google TV, Android 10" />
+                    </div>
+                    <div class="form-group">
+                        <label for="bugSteps">Steps to Reproduce</label>
+                        <textarea id="bugSteps" rows="4"
+                            placeholder="1. Open the app&#10;2. Navigate to...&#10;3. See error"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="bugExpected">Expected Behaviour</label>
+                        <textarea id="bugExpected" rows="2" placeholder="What did you expect to happen?"></textarea>
+                    </div>
+                    <div class="form-error" id="bugError" role="alert" hidden>Please enter a summary before submitting.
+                    </div>
+                    <button type="submit" class="cta-button">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                        </svg>
+                        Open Issue on GitHub
+                    </button>
+                </form>
             </div>
-            <div class="form-group">
-              <label for="bugSteps">Steps to Reproduce</label>
-              <textarea id="bugSteps" rows="4" placeholder="1. Open the app&#10;2. Navigate to...&#10;3. See error"></textarea>
-            </div>
-            <div class="form-group">
-              <label for="bugExpected">Expected Behaviour</label>
-              <textarea id="bugExpected" rows="2" placeholder="What did you expect to happen?"></textarea>
-            </div>
-            <div class="form-error" id="bugError" role="alert" hidden>Please enter a summary before submitting.</div>
-            <button type="submit" class="cta-button">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-              Open Issue on GitHub
-            </button>
-          </form>
-        </div>
-      </section>
+        </section>
 
     </main>
 
     <!-- ========== FOOTER ========== -->
     <footer>
-      <div class="container">
-        <p>&copy; 2026 Hazik Anwar</p>
-        <nav aria-label="Footer links">
-          <a href="privacy.html">Privacy Policy</a>
-          <a href="https://play.google.com/store/apps/details?id=com.haztech.launcher" target="_blank" rel="noopener noreferrer">Play Store</a>
-          <a href="https://github.com/HazAnwar/leap-launcher" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository">
-            <svg viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px;fill:currentColor;vertical-align:middle;margin-right:0.3em"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>GitHub
-          </a>
-        </nav>
-      </div>
+        <div class="container">
+            <p>&copy; 2026 Hazik Anwar</p>
+            <nav aria-label="Footer links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="https://play.google.com/store/apps/details?id=com.haztech.launcher" target="_blank"
+                    rel="noopener noreferrer">Play Store</a>
+                <a href="https://github.com/HazAnwar/leap-launcher" target="_blank" rel="noopener noreferrer"
+                    aria-label="GitHub repository">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"
+                        style="width:16px;height:16px;fill:currentColor;vertical-align:middle;margin-right:0.3em">
+                        <path
+                            d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                    </svg>GitHub
+                </a>
+            </nav>
+        </div>
     </footer>
 
     <script>
-      // Theme toggle
-      const themeToggle = document.getElementById('themeToggle');
-      themeToggle.addEventListener('click', () => {
-        const next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-        document.documentElement.setAttribute('data-theme', next);
-        localStorage.setItem('theme', next);
-      });
+        // Theme toggle
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            const next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+        });
 
-      // Mobile nav toggle
-      const menuBtn = document.getElementById('menuBtn');
-      const navLinks = document.getElementById('navLinks');
-      menuBtn.addEventListener('click', () => {
-        const open = navLinks.classList.toggle('open');
-        menuBtn.setAttribute('aria-expanded', open);
-      });
+        // Mobile nav toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+        menuBtn.addEventListener('click', () => {
+            const open = navLinks.classList.toggle('open');
+            menuBtn.setAttribute('aria-expanded', open);
+        });
 
-      // TV mockup — thumbnail switcher with crossfade, auto-advance & nav buttons
-      const tvScreen  = document.getElementById('tvScreen');
-      const tvCaption = document.getElementById('tvCaption');
-      const thumbs    = Array.from(document.querySelectorAll('.tv-thumb'));
-      let currentIndex = 0;
-      let autoTimer    = null;
-      const INTERVAL   = 4500;
+        // TV mockup — thumbnail switcher with crossfade, auto-advance & nav buttons
+        const tvScreen = document.getElementById('tvScreen');
+        const tvCaption = document.getElementById('tvCaption');
+        const thumbs = Array.from(document.querySelectorAll('.tv-thumb'));
+        let currentIndex = 0;
+        let autoTimer = null;
+        const INTERVAL = 4500;
 
-      function switchTo(index) {
-        if (index < 0) index = thumbs.length - 1;
-        if (index >= thumbs.length) index = 0;
-        if (index === currentIndex) return;
-        thumbs[currentIndex].classList.remove('active');
-        thumbs[currentIndex].setAttribute('aria-pressed', 'false');
-        currentIndex = index;
-        thumbs[currentIndex].classList.add('active');
-        thumbs[currentIndex].setAttribute('aria-pressed', 'true');
-        tvScreen.classList.add('fading');
-        setTimeout(() => {
-          tvScreen.src = thumbs[currentIndex].dataset.src;
-          tvCaption.textContent = thumbs[currentIndex].dataset.caption;
-          tvScreen.classList.remove('fading');
-        }, 180);
-      }
-
-      function startAuto() {
-        clearInterval(autoTimer);
-        autoTimer = setInterval(() => switchTo(currentIndex + 1), INTERVAL);
-      }
-      function stopAuto() { clearInterval(autoTimer); }
-
-      thumbs.forEach((btn, i) => {
-        btn.addEventListener('click', () => { switchTo(i); stopAuto(); startAuto(); });
-      });
-      document.getElementById('tvPrev').addEventListener('click', () => { switchTo(currentIndex - 1); stopAuto(); startAuto(); });
-      document.getElementById('tvNext').addEventListener('click', () => { switchTo(currentIndex + 1); stopAuto(); startAuto(); });
-
-      // Pause auto-advance while the user is hovering or has focus inside the section
-      const tvWrapper = document.querySelector('.tv-wrapper');
-      tvWrapper.addEventListener('mouseenter', stopAuto);
-      tvWrapper.addEventListener('mouseleave', startAuto);
-      tvWrapper.addEventListener('focusin',    stopAuto);
-      tvWrapper.addEventListener('focusout',   startAuto);
-
-      // Keyboard ← → when hovering the section
-      document.querySelector('.screenshots-section').addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft')  { switchTo(currentIndex - 1); stopAuto(); startAuto(); }
-        if (e.key === 'ArrowRight') { switchTo(currentIndex + 1); stopAuto(); startAuto(); }
-      });
-
-      startAuto();
-
-      // Bug report form → open pre-filled GitHub issue
-      document.getElementById('bugForm').addEventListener('submit', (e) => {
-        e.preventDefault();
-        const title = document.getElementById('bugTitle').value.trim();
-        const errorEl = document.getElementById('bugError');
-        if (!title) {
-          errorEl.hidden = false;
-          document.getElementById('bugTitle').focus();
-          return;
+        function switchTo(index) {
+            if (index < 0) index = thumbs.length - 1;
+            if (index >= thumbs.length) index = 0;
+            if (index === currentIndex) return;
+            thumbs[currentIndex].classList.remove('active');
+            thumbs[currentIndex].setAttribute('aria-pressed', 'false');
+            currentIndex = index;
+            thumbs[currentIndex].classList.add('active');
+            thumbs[currentIndex].setAttribute('aria-pressed', 'true');
+            tvScreen.classList.add('fading');
+            setTimeout(() => {
+                tvScreen.style.backgroundImage = `url('${thumbs[currentIndex].dataset.src}')`;
+                tvScreen.setAttribute('aria-label', `Leap Launcher — ${thumbs[currentIndex].dataset.caption} screen`);
+                tvCaption.textContent = thumbs[currentIndex].dataset.caption;
+                tvScreen.classList.remove('fading');
+            }, 180);
         }
-        errorEl.hidden = true;
 
-        const device   = document.getElementById('bugDevice').value.trim();
-        const steps    = document.getElementById('bugSteps').value.trim();
-        const expected = document.getElementById('bugExpected').value.trim();
+        function startAuto() {
+            clearInterval(autoTimer);
+            autoTimer = setInterval(() => switchTo(currentIndex + 1), INTERVAL);
+        }
+        function stopAuto() { clearInterval(autoTimer); }
 
-        let body = '';
-        if (device)   body += `**Device / Android TV Version:** ${device}\n\n`;
-        if (steps)    body += `**Steps to Reproduce:**\n${steps}\n\n`;
-        if (expected) body += `**Expected Behaviour:**\n${expected}\n`;
+        thumbs.forEach((btn, i) => {
+            btn.addEventListener('click', () => { switchTo(i); stopAuto(); startAuto(); });
+        });
+        document.getElementById('tvPrev').addEventListener('click', () => { switchTo(currentIndex - 1); stopAuto(); startAuto(); });
+        document.getElementById('tvNext').addEventListener('click', () => { switchTo(currentIndex + 1); stopAuto(); startAuto(); });
 
-        const url = new URL('https://github.com/HazAnwar/leap-launcher/issues/new');
-        url.searchParams.set('title', title);
-        if (body) url.searchParams.set('body', body);
-        url.searchParams.set('labels', 'bug');
+        // Pause auto-advance while the user is hovering or has focus inside the section
+        const tvWrapper = document.querySelector('.tv-wrapper');
+        tvWrapper.addEventListener('mouseenter', stopAuto);
+        tvWrapper.addEventListener('mouseleave', startAuto);
+        tvWrapper.addEventListener('focusin', stopAuto);
+        tvWrapper.addEventListener('focusout', startAuto);
 
-        window.open(url.toString(), '_blank', 'noopener,noreferrer');
-      });
+        // Keyboard ← → when hovering the section
+        document.querySelector('.screenshots-section').addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') { switchTo(currentIndex - 1); stopAuto(); startAuto(); }
+            if (e.key === 'ArrowRight') { switchTo(currentIndex + 1); stopAuto(); startAuto(); }
+        });
 
-      // Hide error on input
-      document.getElementById('bugTitle').addEventListener('input', () => {
-        document.getElementById('bugError').hidden = true;
-      });
+        startAuto();
+
+        // Bug report form → open pre-filled GitHub issue
+        document.getElementById('bugForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const title = document.getElementById('bugTitle').value.trim();
+            const errorEl = document.getElementById('bugError');
+            if (!title) {
+                errorEl.hidden = false;
+                document.getElementById('bugTitle').focus();
+                return;
+            }
+            errorEl.hidden = true;
+
+            const device = document.getElementById('bugDevice').value.trim();
+            const steps = document.getElementById('bugSteps').value.trim();
+            const expected = document.getElementById('bugExpected').value.trim();
+
+            let body = '';
+            if (device) body += `**Device / Android TV Version:** ${device}\n\n`;
+            if (steps) body += `**Steps to Reproduce:**\n${steps}\n\n`;
+            if (expected) body += `**Expected Behaviour:**\n${expected}\n`;
+
+            const url = new URL('https://github.com/HazAnwar/leap-launcher/issues/new');
+            url.searchParams.set('title', title);
+            if (body) url.searchParams.set('body', body);
+            url.searchParams.set('labels', 'bug');
+
+            window.open(url.toString(), '_blank', 'noopener,noreferrer');
+        });
+
+        // Hide error on input
+        document.getElementById('bugTitle').addEventListener('input', () => {
+            document.getElementById('bugError').hidden = true;
+        });
     </script>
-  </body>
+</body>
+
 </html>

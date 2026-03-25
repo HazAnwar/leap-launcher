@@ -413,23 +413,17 @@ section {
   position: relative;
 }
 .tv-screen {
-  /* exact ratio of the screenshot assets (2784 × 1664) */
-  aspect-ratio: 87 / 52;
+  aspect-ratio: 16 / 9;
   border-radius: 6px;
   overflow: hidden;
-  background: #000;
+  background-color: #000;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   position: relative;
-}
-.tv-screen img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
   transition: opacity 0.18s ease;
 }
-.tv-screen img.fading {
+.tv-screen.fading {
   opacity: 0;
 }
 
