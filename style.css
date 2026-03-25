@@ -139,6 +139,31 @@ a:hover {
 }
 
 /* === Theme Toggle === */
+/* === Nav GitHub icon === */
+.nav-github {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition:
+    border-color var(--t),
+    color var(--t);
+}
+.nav-github:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.nav-github svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
 .theme-toggle {
   background: none;
   border: 1px solid var(--border);
@@ -478,6 +503,7 @@ section {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  align-items: stretch;
   gap: 1.25rem;
 }
 .form-group {
@@ -526,6 +552,7 @@ section {
 }
 .bug-form .cta-button {
   align-self: center;
+  margin-top: 0.5rem;
 }
 
 /* === Privacy page === */
