@@ -90,6 +90,12 @@
                 <div class="tv-screen">
                   <img src="assets/screenshot-home.png" alt="Leap Launcher — Home screen" id="tvScreen" />
                 </div>
+                <button class="tv-nav-btn tv-prev" id="tvPrev" aria-label="Previous screenshot">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <button class="tv-nav-btn tv-next" id="tvNext" aria-label="Next screenshot">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
               </div>
               <div class="tv-stand-neck"></div>
               <div class="tv-stand-base"></div>
@@ -101,25 +107,32 @@
             <!-- Thumbnail strip -->
             <div class="tv-thumbnails" role="list" aria-label="Screenshot thumbnails">
               <button class="tv-thumb active" data-src="assets/screenshot-home.png" data-caption="Home" aria-label="Home" aria-pressed="true">
-                <img src="assets/screenshot-home.png" alt="" />
+                <span class="thumb-img"><img src="assets/screenshot-home.png" alt="" /></span>
+                <span class="thumb-label">Home</span>
               </button>
               <button class="tv-thumb" data-src="assets/screenshot-apps-tv.png" data-caption="Apps" aria-label="Apps" aria-pressed="false">
-                <img src="assets/screenshot-apps-tv.png" alt="" />
+                <span class="thumb-img"><img src="assets/screenshot-apps-tv.png" alt="" /></span>
+                <span class="thumb-label">Apps</span>
               </button>
               <button class="tv-thumb" data-src="assets/screenshot-channels.png" data-caption="Channels" aria-label="Channels" aria-pressed="false">
-                <img src="assets/screenshot-channels.png" alt="" />
+                <span class="thumb-img"><img src="assets/screenshot-channels.png" alt="" /></span>
+                <span class="thumb-label">Channels</span>
               </button>
               <button class="tv-thumb" data-src="assets/screenshot-play-next.png" data-caption="Play Next" aria-label="Play Next" aria-pressed="false">
-                <img src="assets/screenshot-play-next.png" alt="" />
+                <span class="thumb-img"><img src="assets/screenshot-play-next.png" alt="" /></span>
+                <span class="thumb-label">Play Next</span>
               </button>
               <button class="tv-thumb" data-src="assets/screenshot-settings.png" data-caption="Settings" aria-label="Settings" aria-pressed="false">
-                <img src="assets/screenshot-settings.png" alt="" />
+                <span class="thumb-img"><img src="assets/screenshot-settings.png" alt="" /></span>
+                <span class="thumb-label">Settings</span>
               </button>
               <button class="tv-thumb" data-src="assets/screenshot-customisation.png" data-caption="Customise" aria-label="Customise" aria-pressed="false">
-                <img src="assets/screenshot-customisation.png" alt="" />
+                <span class="thumb-img"><img src="assets/screenshot-customisation.png" alt="" /></span>
+                <span class="thumb-label">Customise</span>
               </button>
               <button class="tv-thumb" data-src="assets/screenshot-apps-mobile.png" data-caption="Mobile View" aria-label="Mobile View" aria-pressed="false">
-                <img src="assets/screenshot-apps-mobile.png" alt="" />
+                <span class="thumb-img"><img src="assets/screenshot-apps-mobile.png" alt="" /></span>
+                <span class="thumb-label">Mobile</span>
               </button>
             </div>
 
@@ -191,26 +204,57 @@
         menuBtn.setAttribute('aria-expanded', open);
       });
 
-      // TV mockup — thumbnail switcher with crossfade
-      const tvScreen = document.getElementById('tvScreen');
+      // TV mockup — thumbnail switcher with crossfade, auto-advance & nav buttons
+      const tvScreen  = document.getElementById('tvScreen');
       const tvCaption = document.getElementById('tvCaption');
-      document.querySelectorAll('.tv-thumb').forEach((btn) => {
-        btn.addEventListener('click', () => {
-          if (btn.classList.contains('active')) return;
-          document.querySelectorAll('.tv-thumb').forEach((t) => {
-            t.classList.remove('active');
-            t.setAttribute('aria-pressed', 'false');
-          });
-          btn.classList.add('active');
-          btn.setAttribute('aria-pressed', 'true');
-          tvScreen.classList.add('fading');
-          setTimeout(() => {
-            tvScreen.src = btn.dataset.src;
-            tvCaption.textContent = btn.dataset.caption;
-            tvScreen.classList.remove('fading');
-          }, 180);
-        });
+      const thumbs    = Array.from(document.querySelectorAll('.tv-thumb'));
+      let currentIndex = 0;
+      let autoTimer    = null;
+      const INTERVAL   = 4500;
+
+      function switchTo(index) {
+        if (index < 0) index = thumbs.length - 1;
+        if (index >= thumbs.length) index = 0;
+        if (index === currentIndex) return;
+        thumbs[currentIndex].classList.remove('active');
+        thumbs[currentIndex].setAttribute('aria-pressed', 'false');
+        currentIndex = index;
+        thumbs[currentIndex].classList.add('active');
+        thumbs[currentIndex].setAttribute('aria-pressed', 'true');
+        tvScreen.classList.add('fading');
+        setTimeout(() => {
+          tvScreen.src = thumbs[currentIndex].dataset.src;
+          tvCaption.textContent = thumbs[currentIndex].dataset.caption;
+          tvScreen.classList.remove('fading');
+        }, 180);
+      }
+
+      function startAuto() {
+        clearInterval(autoTimer);
+        autoTimer = setInterval(() => switchTo(currentIndex + 1), INTERVAL);
+      }
+      function stopAuto() { clearInterval(autoTimer); }
+
+      thumbs.forEach((btn, i) => {
+        btn.addEventListener('click', () => { switchTo(i); stopAuto(); startAuto(); });
       });
+      document.getElementById('tvPrev').addEventListener('click', () => { switchTo(currentIndex - 1); stopAuto(); startAuto(); });
+      document.getElementById('tvNext').addEventListener('click', () => { switchTo(currentIndex + 1); stopAuto(); startAuto(); });
+
+      // Pause auto-advance while the user is hovering or has focus inside the section
+      const tvWrapper = document.querySelector('.tv-wrapper');
+      tvWrapper.addEventListener('mouseenter', stopAuto);
+      tvWrapper.addEventListener('mouseleave', startAuto);
+      tvWrapper.addEventListener('focusin',    stopAuto);
+      tvWrapper.addEventListener('focusout',   startAuto);
+
+      // Keyboard ← → when hovering the section
+      document.querySelector('.screenshots-section').addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft')  { switchTo(currentIndex - 1); stopAuto(); startAuto(); }
+        if (e.key === 'ArrowRight') { switchTo(currentIndex + 1); stopAuto(); startAuto(); }
+      });
+
+      startAuto();
 
       // Bug report form → open pre-filled GitHub issue
       document.getElementById('bugForm').addEventListener('submit', (e) => {
