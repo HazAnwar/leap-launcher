@@ -3,24 +3,41 @@
    hazanwar.github.io/leap-launcher/
    ============================================================ */
 
-@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&family=Inter:wght@300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;600;700&display=swap");
 
-/* === Tokens === */
+/* === Tokens (dark — default) === */
 :root {
   --bg: #0a0a0a;
   --surface: #141414;
   --surface-2: #1e1e1e;
   --border: rgba(255, 255, 255, 0.07);
+  --nav-bg: rgba(10, 10, 10, 0.88);
   --accent: #00ffe1;
   --accent-rgb: 0, 255, 225;
   --blue: #3b82f6;
   --text: #f0f0f0;
   --text-muted: #888;
+  --text-hover: #ffffff;
   --radius: 12px;
   --radius-lg: 20px;
   --nav-h: 64px;
   --max-w: 1100px;
   --t: 0.2s ease;
+}
+
+/* === Tokens (light) === */
+[data-theme="light"] {
+  --bg: #f5f6f8;
+  --surface: #ffffff;
+  --surface-2: #eef0f3;
+  --border: rgba(0, 0, 0, 0.09);
+  --nav-bg: rgba(245, 246, 248, 0.92);
+  --accent: #0891b2;
+  --accent-rgb: 8, 145, 178;
+  --blue: #2563eb;
+  --text: #111827;
+  --text-muted: #6b7280;
+  --text-hover: #000000;
 }
 
 /* === Reset === */
@@ -51,7 +68,7 @@ a {
   transition: color var(--t);
 }
 a:hover {
-  color: #fff;
+  color: var(--text-hover);
 }
 
 /* === Nav === */
@@ -60,7 +77,7 @@ a:hover {
   top: 0;
   z-index: 100;
   height: var(--nav-h);
-  background: rgba(10, 10, 10, 0.88);
+  background: var(--nav-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
@@ -74,7 +91,7 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 0.625rem;
-  font-family: "Pixelify Sans", sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: 1.2rem;
   color: var(--accent);
   text-decoration: none;
@@ -121,6 +138,51 @@ a:hover {
   transition: var(--t);
 }
 
+/* === Theme Toggle === */
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition:
+    border-color var(--t),
+    color var(--t),
+    background var(--t);
+}
+.theme-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.theme-toggle svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+/* Dark mode: show sun (click to go light). Light mode: show moon (click to go dark). */
+.icon-moon {
+  display: block;
+}
+.icon-sun {
+  display: none;
+}
+[data-theme="light"] .icon-moon {
+  display: none;
+}
+[data-theme="light"] .icon-sun {
+  display: block;
+}
+
 /* === Hero === */
 .hero {
   min-height: calc(100vh - var(--nav-h));
@@ -158,7 +220,8 @@ a:hover {
     0 20px 60px rgba(0, 0, 0, 0.5);
 }
 .hero h1 {
-  font-family: "Pixelify Sans", sans-serif;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
   font-size: clamp(2.8rem, 9vw, 5rem);
   color: var(--accent);
   line-height: 1.05;
@@ -215,7 +278,8 @@ section {
   margin: 0 auto;
 }
 .section-title {
-  font-family: "Pixelify Sans", sans-serif;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   color: var(--accent);
   text-align: center;
@@ -250,7 +314,8 @@ section {
   margin-bottom: 1rem;
 }
 .feature-card h3 {
-  font-family: "Pixelify Sans", sans-serif;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
   color: var(--accent);
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
@@ -353,7 +418,8 @@ section {
   line-height: 1.8;
 }
 .prose h1 {
-  font-family: "Pixelify Sans", sans-serif;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
   color: var(--accent);
   font-size: clamp(2rem, 6vw, 3rem);
   text-shadow: 0 0 30px rgba(var(--accent-rgb), 0.35);
@@ -407,7 +473,9 @@ footer a:hover {
     top: var(--nav-h);
     left: 0;
     right: 0;
-    background: var(--surface);
+    background: var(--nav-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
     padding: 1rem 1.25rem;
     gap: 1rem;

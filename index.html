@@ -9,23 +9,31 @@
     <!-- Open Graph -->
     <meta property="og:title" content="Leap Launcher" />
     <meta property="og:description" content="A simple and elegant launcher for your Android TV." />
-    <meta property="og:image" content="https://hazanwar.github.io/leap-launcher/assets/ic_launcher.webp" />
+    <meta property="og:image" content="https://hazanwar.github.io/leap-launcher/assets/logo.webp" />
     <meta property="og:url" content="https://hazanwar.github.io/leap-launcher/" />
     <meta property="og:type" content="website" />
     <!-- Icon -->
-    <link rel="icon" href="assets/ic_launcher.webp" type="image/webp" />
+    <link rel="icon" href="assets/logo.webp" type="image/webp" />
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
+    <script>
+      // Apply theme before paint to prevent flash
+      (function () {
+        var saved = localStorage.getItem('theme');
+        var prefer = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', saved || prefer);
+      })();
+    </script>
   </head>
   <body>
 
     <!-- ========== NAV ========== -->
     <nav class="nav">
       <a href="." class="nav-brand">
-        <img src="assets/ic_launcher.webp" alt="" class="nav-icon" />
+        <img src="assets/logo.webp" alt="" class="nav-icon" />
         <span>Leap Launcher</span>
       </a>
       <div class="nav-links" id="navLinks">
@@ -34,6 +42,12 @@
         <a href="privacy.html">Privacy</a>
         <a href="https://hazanwar.github.io/" class="nav-cta">Hazik Anwar ↗</a>
       </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle colour theme">
+        <!-- Moon = switch to dark (shown in light mode) -->
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <!-- Sun = switch to light (shown in dark mode) -->
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
       <button class="nav-hamburger" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
         <span></span><span></span><span></span>
       </button>
@@ -44,7 +58,7 @@
       <!-- ========== HERO ========== -->
       <section class="hero">
         <div class="hero-content">
-          <img src="assets/ic_launcher.webp" alt="Leap Launcher app icon" class="hero-icon" />
+          <img src="assets/logo.webp" alt="Leap Launcher app icon" class="hero-icon" />
           <h1>Leap Launcher</h1>
           <p class="hero-subtitle">A simple and elegant launcher for your Android TV.</p>
           <div class="hero-actions">
@@ -96,13 +110,13 @@
         <div class="container">
           <h2 class="section-title">Screenshots</h2>
           <div class="screenshot-gallery">
-            <img src="assets/Screenshot1.png" alt="Leap Launcher — Home screen" class="screenshot" tabindex="0" />
-            <img src="assets/Screenshot2.png" alt="Leap Launcher — App grid" class="screenshot" tabindex="0" />
-            <img src="assets/Screenshot3.png" alt="Leap Launcher — Settings" class="screenshot" tabindex="0" />
-            <img src="assets/Screenshot4.png" alt="Leap Launcher — Recent apps" class="screenshot" tabindex="0" />
-            <img src="assets/Screenshot5.png" alt="Leap Launcher — Search" class="screenshot" tabindex="0" />
-            <img src="assets/Screenshot6.png" alt="Leap Launcher — Customisation" class="screenshot" tabindex="0" />
-            <img src="assets/Screenshot7.png" alt="Leap Launcher — Dark mode" class="screenshot" tabindex="0" />
+            <img src="assets/screenshot-home.png" alt="Leap Launcher — Home screen" class="screenshot" tabindex="0" />
+            <img src="assets/screenshot-apps.png" alt="Leap Launcher — App grid" class="screenshot" tabindex="0" />
+            <img src="assets/screenshot-settings.png" alt="Leap Launcher — Settings" class="screenshot" tabindex="0" />
+            <img src="assets/screenshot-recent.png" alt="Leap Launcher — Recent apps" class="screenshot" tabindex="0" />
+            <img src="assets/screenshot-search.png" alt="Leap Launcher — Search" class="screenshot" tabindex="0" />
+            <img src="assets/screenshot-customise.png" alt="Leap Launcher — Customisation" class="screenshot" tabindex="0" />
+            <img src="assets/screenshot-dark.png" alt="Leap Launcher — Dark mode" class="screenshot" tabindex="0" />
           </div>
         </div>
       </section>
@@ -128,6 +142,14 @@
     </div>
 
     <script>
+      // Theme toggle
+      const themeToggle = document.getElementById('themeToggle');
+      themeToggle.addEventListener('click', () => {
+        const next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+      });
+
       // Mobile nav toggle
       const menuBtn = document.getElementById('menuBtn');
       const navLinks = document.getElementById('navLinks');
