@@ -1,19 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - Leap Launcher</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Privacy Policy</h1>
-        <p>Leap Launcher uses Firebase Analytics to collect anonymous usage data to help us improve the app. This includes information like your device type, operating system, and how you use the app's features. </p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy — Leap Launcher</title>
+    <meta name="description" content="Privacy policy for the Leap Launcher Android TV app." />
+    <meta name="theme-color" content="#00ffe1" />
+    <link rel="icon" href="assets/ic_launcher.webp" type="image/webp" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
 
-        <p>We do not collect any personally identifiable information (PII). All data is aggregated and anonymized. The information we collect is only used to improve the app and is not shared with anyone else.</p>
+    <!-- ========== NAV ========== -->
+    <nav class="nav">
+      <a href="." class="nav-brand">
+        <img src="assets/ic_launcher.webp" alt="" class="nav-icon" />
+        <span>Leap Launcher</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#screenshots">Screenshots</a>
+        <a href="privacy.html" aria-current="page">Privacy</a>
+        <a href="https://hazanwar.github.io/" class="nav-cta">Hazik Anwar ↗</a>
+      </div>
+      <button class="nav-hamburger" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
 
-        <p><a href="index.html">Go back</a></p>
-    </div>
-</body>
+    <main>
+      <section style="padding: 5rem 2rem;">
+        <div class="prose">
+          <a href="index.html" class="back-link">← Back to Leap Launcher</a>
+          <h1>Privacy Policy</h1>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 2.5rem;">Last updated: March 2025</p>
+
+          <p>Leap Launcher uses Firebase Analytics to collect anonymous usage data to help improve the app. This includes information such as your device type, operating system version, and how you interact with the app's features.</p>
+
+          <p>We do not collect any personally identifiable information (PII). All data is aggregated and anonymised. The information collected is used solely to improve the app experience and is never shared with third parties.</p>
+
+          <p>If you have any questions about this privacy policy, feel free to reach out via <a href="https://hazanwar.github.io/">hazanwar.github.io</a>.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>Made with ❤️ by <a href="https://hazanwar.github.io/">Hazik Anwar</a></p>
+        <nav aria-label="Footer links">
+          <a href="index.html">Leap Launcher</a>
+          <a href="https://hazanwar.github.io/">Portfolio ↗</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script>
+      const menuBtn = document.getElementById('menuBtn');
+      const navLinks = document.getElementById('navLinks');
+      menuBtn.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', open);
+      });
+    </script>
+  </body>
 </html>
