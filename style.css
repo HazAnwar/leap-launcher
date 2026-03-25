@@ -361,51 +361,71 @@ section {
   box-shadow: 0 10px 36px rgba(var(--accent-rgb), 0.18);
 }
 
-/* === Lightbox === */
-.lightbox {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  background: rgba(0, 0, 0, 0.92);
-  backdrop-filter: blur(8px);
-  align-items: center;
-  justify-content: center;
+/* === Bug Report === */
+.bug-report {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
 }
-.lightbox.active {
+.section-lead {
+  text-align: center;
+  color: var(--text-muted);
+  margin-top: -0.5rem;
+  margin-bottom: 2.5rem;
+  font-size: 1.05rem;
+}
+.bug-form {
+  max-width: 640px;
+  margin: 0 auto;
   display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
-.lightbox-img {
-  max-width: 92vw;
-  max-height: 88vh;
-  border-radius: var(--radius);
-  box-shadow: 0 0 80px rgba(0, 0, 0, 0.8);
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }
-.lightbox-close {
-  position: absolute;
-  top: 1.25rem;
-  right: 1.5rem;
-  background: none;
-  border: 1px solid var(--border);
+.form-group label {
+  font-size: 0.875rem;
+  font-weight: 600;
   color: var(--text);
-  font-size: 1.75rem;
-  line-height: 1;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition:
-    background var(--t),
-    color var(--t),
-    border-color var(--t);
+  letter-spacing: 0.02em;
 }
-.lightbox-close:hover {
-  background: var(--accent);
-  color: #000;
+.form-group label span {
+  color: var(--accent);
+}
+.form-group input,
+.form-group textarea {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) / 2);
+  color: var(--text);
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  padding: 0.65rem 0.9rem;
+  transition:
+    border-color var(--t),
+    box-shadow var(--t);
+  resize: vertical;
+  outline: none;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+.form-group input:focus,
+.form-group textarea:focus {
   border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.15);
+}
+.form-error {
+  color: #f87171;
+  font-size: 0.875rem;
+  margin-top: -0.5rem;
+}
+.bug-form .cta-button {
+  align-self: flex-start;
 }
 
 /* === Privacy page === */

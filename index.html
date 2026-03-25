@@ -36,8 +36,8 @@
         <img src="assets/logo.webp" alt="Leap Launcher" class="nav-icon" />
       </a>
       <div class="nav-links" id="navLinks">
+        <a href="#report">Report a Bug</a>
         <a href="privacy.html">Privacy</a>
-        <a href="https://hazanwar.github.io/" class="nav-cta">Hazik Anwar ↗</a>
       </div>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle colour theme">
         <!-- Moon = switch to dark (shown in light mode) -->
@@ -73,6 +73,37 @@
         </div>
       </section>
 
+      <!-- ========== BUG REPORT ========== -->
+      <section class="bug-report" id="report">
+        <div class="container">
+          <h2 class="section-title">Report a Bug</h2>
+          <p class="section-lead">Found an issue? Fill in the details below and we'll open a GitHub issue for you.</p>
+          <form class="bug-form" id="bugForm" novalidate>
+            <div class="form-group">
+              <label for="bugTitle">Summary <span aria-hidden="true">*</span></label>
+              <input type="text" id="bugTitle" placeholder="Brief description of the issue" required />
+            </div>
+            <div class="form-group">
+              <label for="bugDevice">Device / Android TV Version</label>
+              <input type="text" id="bugDevice" placeholder="e.g. Chromecast with Google TV, Android 10" />
+            </div>
+            <div class="form-group">
+              <label for="bugSteps">Steps to Reproduce</label>
+              <textarea id="bugSteps" rows="4" placeholder="1. Open the app&#10;2. Navigate to...&#10;3. See error"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="bugExpected">Expected Behaviour</label>
+              <textarea id="bugExpected" rows="2" placeholder="What did you expect to happen?"></textarea>
+            </div>
+            <div class="form-error" id="bugError" role="alert" hidden>Please enter a summary before submitting.</div>
+            <button type="submit" class="cta-button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              Open Issue on GitHub
+            </button>
+          </form>
+        </div>
+      </section>
+
     </main>
 
     <!-- ========== FOOTER ========== -->
@@ -86,12 +117,6 @@
         </nav>
       </div>
     </footer>
-
-    <!-- ========== LIGHTBOX ========== -->
-    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot viewer">
-      <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox">&times;</button>
-      <img src="" alt="" class="lightbox-img" id="lightboxImg" />
-    </div>
 
     <script>
       // Theme toggle
@@ -110,26 +135,39 @@
         menuBtn.setAttribute('aria-expanded', open);
       });
 
-      // Lightbox
-      const lightbox = document.getElementById('lightbox');
-      const lightboxImg = document.getElementById('lightboxImg');
-      document.querySelectorAll('.screenshot').forEach((img) => {
-        const open = () => {
-          lightboxImg.src = img.src;
-          lightboxImg.alt = img.alt;
-          lightbox.classList.add('active');
-          document.body.style.overflow = 'hidden';
-        };
-        img.addEventListener('click', open);
-        img.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') open(); });
+      // Bug report form → open pre-filled GitHub issue
+      document.getElementById('bugForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const title = document.getElementById('bugTitle').value.trim();
+        const errorEl = document.getElementById('bugError');
+        if (!title) {
+          errorEl.hidden = false;
+          document.getElementById('bugTitle').focus();
+          return;
+        }
+        errorEl.hidden = true;
+
+        const device   = document.getElementById('bugDevice').value.trim();
+        const steps    = document.getElementById('bugSteps').value.trim();
+        const expected = document.getElementById('bugExpected').value.trim();
+
+        let body = '';
+        if (device)   body += `**Device / Android TV Version:** ${device}\n\n`;
+        if (steps)    body += `**Steps to Reproduce:**\n${steps}\n\n`;
+        if (expected) body += `**Expected Behaviour:**\n${expected}\n`;
+
+        const url = new URL('https://github.com/HazAnwar/leap-launcher/issues/new');
+        url.searchParams.set('title', title);
+        if (body) url.searchParams.set('body', body);
+        url.searchParams.set('labels', 'bug');
+
+        window.open(url.toString(), '_blank', 'noopener,noreferrer');
       });
-      function closeLightbox() {
-        lightbox.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-      document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
-      lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
-      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+      // Hide error on input
+      document.getElementById('bugTitle').addEventListener('input', () => {
+        document.getElementById('bugError').hidden = true;
+      });
     </script>
   </body>
 </html>
