@@ -1,0 +1,83 @@
+name: 🐛 Bug Report
+description: Report a bug or unexpected behaviour in Leap Launcher
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please fill in the details below.
+
+  - type: input
+    id: device
+    attributes:
+      label: Device & Android Version
+      description: What device and Android version are you using?
+      placeholder: e.g. Pixel 8 – Android 15 / Chromecast with Google TV – Android 12
+    validations:
+      required: true
+
+  - type: input
+    id: app-version
+    attributes:
+      label: App Version
+      description: Which version of Leap Launcher are you running?
+      placeholder: e.g. 1.2.0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      description: Are you using Leap Launcher on mobile or TV?
+      options:
+        - Mobile
+        - TV
+        - Both
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of what the bug is.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: Steps to reproduce the behaviour.
+      placeholder: |
+        1. Go to '...'
+        2. Tap on '...'
+        3. Scroll down to '...'
+        4. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behaviour
+      description: What did you expect to happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots / Recordings
+      description: If applicable, add screenshots or screen recordings to help explain your problem.
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Any other context about the problem.
+    validations:
+      required: false

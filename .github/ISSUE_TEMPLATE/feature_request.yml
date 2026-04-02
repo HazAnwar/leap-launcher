@@ -1,0 +1,61 @@
+name: ✨ Feature Request
+description: Suggest a new feature or improvement for Leap Launcher
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have an idea to make Leap Launcher better? We'd love to hear it!
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      description: Which platform would this feature apply to?
+      options:
+        - Mobile
+        - TV
+        - Both
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Feature Description
+      description: A clear and concise description of the feature you'd like.
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem it Solves
+      description: Is this related to a problem or frustration? Describe it.
+      placeholder: I'm always frustrated when...
+    validations:
+      required: false
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Have you considered any alternative solutions or workarounds?
+    validations:
+      required: false
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Mockups / Screenshots
+      description: If applicable, add any mockups, screenshots, or examples from other apps.
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Any other context about the feature request.
+    validations:
+      required: false

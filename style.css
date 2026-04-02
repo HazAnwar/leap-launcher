@@ -265,9 +265,9 @@ a:hover {
 }
 .hero-actions {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
 }
 
 /* === CTA Button === */
@@ -296,6 +296,17 @@ a:hover {
   height: 20px;
   fill: currentColor;
   flex-shrink: 0;
+}
+.cta-button.cta-secondary {
+  background: transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  box-shadow: 0 4px 24px rgba(var(--accent-rgb), 0.1);
+}
+.cta-button.cta-secondary:hover {
+  background: rgba(var(--accent-rgb), 0.1);
+  color: var(--accent);
+  box-shadow: 0 8px 36px rgba(var(--accent-rgb), 0.22);
 }
 
 /* === Sections === */
