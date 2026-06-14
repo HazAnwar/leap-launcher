@@ -35,14 +35,6 @@ Leap Launcher is a clean, lightweight launcher designed for both Android phones 
 
 > **Note:** APK downloads are available on the [GitHub Releases](https://github.com/HazAnwar/leap-launcher/releases) page. You can find the latest version as well as all previous releases there.
 
-## Screenshots
-
-<p align="center">
-  <img src="assets/screenshot-home.png" alt="Home screen" width="250" />
-  <img src="assets/screenshot-apps-mobile.png" alt="Apps (mobile)" width="250" />
-  <img src="assets/screenshot-customisation.png" alt="Customisation" width="250" />
-</p>
-
 ## Support
 
 If you enjoy Leap Launcher and want to support its development, consider buying me a coffee:
