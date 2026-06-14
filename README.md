@@ -54,7 +54,3 @@ If you enjoy Leap Launcher and want to support its development, consider buying 
 ## Contributing
 
 Found a bug or have a feature idea? Feel free to [open an issue](https://github.com/HazAnwar/leap-launcher/issues/new/choose). Contributions and feedback are always welcome.
-
-## Privacy
-
-Leap Launcher respects your privacy. See the full [Privacy Policy](https://hazanwar.github.io/leap-launcher/privacy.html).
